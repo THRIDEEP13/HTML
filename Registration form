@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 500px; /* Adjust as needed */
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="date"],
+        input[type="tel"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type="radio"] {
+            margin-right: 5px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+        .btn-container{
+            text-align: center; /* Center the buttons */
+        }
+
+        .error {
+            color: red;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Registration Form</h2>
+        <form id="registrationForm">
+            <label for="firstName">First Name:</label>
+            <input type="text" id="firstName" name="firstName" required>
+            <div id="firstNameError" class="error"></div>
+
+            <label for="lastName">Last Name:</label>
+            <input type="text" id="lastName" name="lastName" required>
+            <div id="lastNameError" class="error"></div>
+
+            <label>Gender:</label>
+            <input type="radio" id="male" name="gender" value="male" required>
+            <label for="male">Male</label>
+            <input type="radio" id="female" name="gender" value="female">
+            <label for="female">Female</label>
+            <div id="genderError" class="error"></div>
+
+            <label for="subject">Subject of Interest:</label>
+            <input type="text" id="subject" name="subject">
+
+            <label for="language">Language Known:</label>
+            <select id="language" name="language">
+                <option value="english">English</option>
+                <option value="hindi">Hindi</option>
+                <option value="telugu">Telugu</option>
+                </select>
+
+            <label for="dob">Date of Birth (dd-mm-yyyy):</label>
+            <input type="date" id="dob" name="dob"  pattern="\d{2}-\d{2}-\d{4}" required>
+            <div id="dobError" class="error"></div>
+
+            <label for="contact">Contact No.:</label>
+            <input type="tel" id="contact" name="contact" pattern="[0-9]{10}" required>
+            <div id="contactError" class="error"></div>
+
+            <label for="address">Address:</label>
+            <textarea id="address" name="address" rows="4" required></textarea>
+            <div id="addressError" class="error"></div>
+
+            <label for="pincode">Pin Code:</label>
+            <input type="text" id="pincode" name="pincode" pattern="[0-9]{6}" required>
+            <div id="pincodeError" class="error"></div>
+
+            <label for="state">State:</label>
+            <input type="text" id="state" name="state" required>
+            <div id="stateError" class="error"></div>
+
+
+            <label for="country">Country:</label>
+            <input type="text" id="country" name="country" required>
+            <div id="countryError" class="error"></div>
+
+            <div class="btn-container">
+            <button type="reset">Reset</button>
+            <button type="submit">Submit</button>
+            </div>
+
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('registrationForm').addEventListener('submit', function(event) {
+            // Basic client-side validation (you should add more robust checks)
+            let isValid = true;
+
+            // Example: First Name validation
+            const firstName = document.getElementById('firstName').value;
+            if (firstName.trim() === "") {
+                document.getElementById('firstNameError').textContent = "First Name is required.";
+                isValid = false;
+            } else {
+                document.getElementById('firstNameError').textContent = "";
+            }
+            // Add similar validation for other fields...
+            const lastName = document.getElementById('lastName').value;
+            if (lastName.trim() === "") {
+                document.getElementById('lastNameError').textContent = "Last Name is required.";
+                isValid = false;
+            } else {
+                document.getElementById('lastNameError').textContent = "";
+            }
+
+            const genderElements = document.querySelectorAll('input[name="gender"]');
+            let genderSelected = false;
+            for (const element of genderElements) {
+                if (element.checked) {
+                    genderSelected = true;
+                    break;
+                }
+            }
+            if (!genderSelected) {
+                document.getElementById('genderError').textContent = "Gender is required.";
+                isValid = false;
+            } else {
+                document.getElementById('genderError').textContent = "";
+            }
+
+            const dob = document.getElementById('dob').value;
+            if (dob === "") {
+                document.getElementById('dobError').textContent = "Date of Birth is required.";
+                isValid = false;
+            } else {
+                document.getElementById('dobError').textContent = "";
+            }
+
+            const contact = document.getElementById('contact').value;
+            if (contact === "" || !/^[0-9]{10}$/.test(contact)) {
+                document.getElementById('contactError').textContent = "Valid 10-digit Contact No. is required.";
+                isValid = false;
+            } else {
+                document.getElementById('contactError').textContent = "";
+            }
+            const address = document.getElementById('address').value;
+            if (address.trim() === "") {
+                document.getElementById('addressError').textContent = "Address is required.";
+                isValid = false;
+            } else {
+                document.getElementById('addressError').textContent = "";
+            }
+
+            const pincode = document.getElementById('pincode').value;
+            if (pincode === "" || !/^[0-9]{6}$/.test(pincode)) {
+                document.getElementById('pincodeError').textContent = "Valid 6-digit Pin Code is required.";
+                isValid = false;
+            } else {
+                document.getElementById('pincodeError').textContent = "";
+            }
+             const state = document.getElementById('state').value;
+            if (state.trim() === "") {
+                document.getElementById('stateError').textContent = "State is required.";
+                isValid = false;
+            } else {
+                document.getElementById('stateError').textContent = "";
+            }
+             const country = document.getElementById('country').value;
+            if (country.trim() === "") {
+                document.getElementById('countryError').textContent = "Country is required.";
+                isValid = false;
+            } else {
+                document.getElementById('countryError').textContent = "";
+            }
+
+
+            if (!isValid) {
+                event.preventDefault(); // Prevent form submission if validation fails
+            }
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery - Delhi Tourism</title>
+    <style>
+        *{
+            margin: 0;
+        }
+        /* Previous styles remain the same */
+        .gallery-grid {
+            display: grid;
+            /* grid-template-columns: repeat(auto-fit , minmax(250px, 1fr)); */
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            padding: 2rem;
+        }
+
+        .gallery-item img {
+
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        nav {
+            background: #333;
+            padding: 1rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            margin: 0 0.5rem;
+        }
+        h1 {
+            margin: 4px;
+            text-align: center;
+            text-decoration: dashed;
+        }
+p {
+    padding: 4px;
+}
+
+        .gallery-item img:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation remains the same -->
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="heritage.html">Heritage</a>
+        <a href="hotel.html">Hotel Booking</a>
+        <a href="gallery.html">Gallery</a>
+    </nav>
+
+    <div class="header">
+        <h1>Photo Gallery</h1>
+        <p>Explore the beauty of Delhi through our collection of photographs</p>
+    </div>
+
+    <div class="gallery-grid">
+        <div class="gallery-item">
+            <img src="https://i.ytimg.com/vi/BUAxqsvoc6k/sddefault.jpg" alt="Red Fort">
+        </div>
+        <div class="gallery-item">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOjwfB2KNbo8AR3KR000IFUE5uekirt33gQQ&s" alt="Qutub Minar">
+        </div>
+        <div class="gallery-item">
+            <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/08/c9/39/b3/humayun-s-tomb.jpg?w=900&h=500&s=1" alt="Humayun's Tomb">
+        </div>
+        <div class="gallery-item">
+            <img src="https://theheritageart.com/wp-content/uploads/2022/12/India-Gate-Delhi-1-1000x565.jpg" alt="India Gate">
+        </div>
+        <div class="gallery-item">
+            <img src="https://s7ap1.scene7.com/is/image/incredibleindia/lotus-temple-delhi-1-attr-hero?qlt=82&ts=1727352198077" alt="Lotus Temple">
+        </div>
+        <div class="gallery-item">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Jama_Masjid_-_In_the_Noon.jpg/465px-Jama_Masjid_-_In_the_Noon.jpg" alt="Jama Masjid">
+        </div>
+        <div class="gallery-item">
+            <img src="https://img.jagranjosh.com/imported/images/E/Articles/Akshardham-Temple-Delhi.webp"alt="Akshardham Temple">
+        </div>
+        <div class="gallery-item">
+            <img src="https://a.travel-assets.com/findyours-php/viewfinder/images/res40/67000/67991-New-Delhi.jpg" alt="Rashtrapati Bhavan">
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2025 Delhi Tourism. All rights reserved.</p>
+    </footer>
+</body>
+</html>
